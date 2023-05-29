@@ -41,6 +41,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
@@ -65,10 +66,18 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "5c7cb8fe-ad7a-48ff-b52a-c84596ba2886": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Featured Products",
+        "collection": "featured-products"
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "5c7cb8fe-ad7a-48ff-b52a-c84596ba2886"
   ]
 }

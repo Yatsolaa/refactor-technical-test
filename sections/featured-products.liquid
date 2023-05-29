@@ -1,0 +1,38 @@
+{{ 'featured-products.scss.css' | asset_url | stylesheet_tag }}
+
+<section class="featured-products">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="featured-products__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <ul class="featured-products__products">
+      {% if section.settings.collection != blank %}
+        {% render 'featured-product-item' for section.settings.collection.products as product, product: product %}
+      {% endif %}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom featured products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom featured products"
+    }
+  ]
+}
+{% endschema %}
