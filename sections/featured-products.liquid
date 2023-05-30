@@ -1,6 +1,6 @@
 {{ 'featured-products.scss.css' | asset_url | stylesheet_tag }}
 
-<section class="featured-products">
+<section class="featured-products" id="custom-featured-products">
   <div class="container">
     {% if section.settings.title != blank %}
       <h2 class="featured-products__title">{{ section.settings.title }}</h2>
@@ -12,6 +12,34 @@
     </ul>
   </div>
 </section>
+
+<script>
+  var forms = document.querySelectorAll('.featured-products__form');
+
+  forms.forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var variantId = form.querySelector('.product-variant-select').value;
+      var quantity = 1;
+
+      var formData = new FormData();
+      formData.append('id', variantId);
+      formData.append('quantity', quantity);
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          console.log('Product added to cart');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+  });
+</script>
 
 {% schema %}
 {

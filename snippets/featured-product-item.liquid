@@ -34,9 +34,15 @@
   </div>
   <h4 class="featured-products__product-name">{{ product.title }}</h4>
 
-  <div class="featured-products__form">
-    <form id="featured-products-form" method="post" action="/cart/add">
-      <input id="product-id" type="hidden" name="id" value="{{ product.variants.first.id }}">
+  <div class="featured-products__form-wrapper">
+    <form class="featured-products__form" method="post" action="/cart/add">
+      <input
+        id="product-id"
+        class="product-variant-select"
+        type="hidden"
+        name="id"
+        value="{{ product.variants.first.id }}"
+      >
       <input
         type="submit"
         value="Add to cart - {{ product.price | money_without_trailing_zeros }}"
