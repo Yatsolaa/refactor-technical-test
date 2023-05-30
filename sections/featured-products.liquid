@@ -14,6 +14,21 @@
 </section>
 
 <script>
+  function updateSection() {
+    fetch(window.Shopify.routes.root + '?section_id=shopify-section-{{ section.id }}')
+      .then((response) => response.text())
+      .then((data) => {
+        const parser = new DOMParser();
+        const html = parser.parseFromString(data, 'text/html');
+        const sectionHTML = html.querySelector('#custom-featured-products').innerHTML;
+
+        document.getElementById('custom-featured-products').innerHTML = sectionHTML;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   var forms = document.querySelectorAll('.featured-products__form');
 
   forms.forEach(function (form) {
@@ -33,6 +48,7 @@
       })
         .then((response) => {
           console.log('Product added to cart');
+          {% comment %} updateSection(); {% endcomment %}
         })
         .catch((error) => {
           console.error(error);
