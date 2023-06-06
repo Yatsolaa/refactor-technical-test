@@ -1,6 +1,6 @@
 {{ 'featured-products.scss.css' | asset_url | stylesheet_tag }}
 
-<section class="featured-products" id="custom-featured-products">
+<featured-products class="featured-products" id="custom-featured-products">
   <div class="container">
     {% if section.settings.title != blank %}
       <h2 class="featured-products__title">{{ section.settings.title }}</h2>
@@ -11,51 +11,7 @@
       {% endif %}
     </ul>
   </div>
-</section>
-
-<script>
-  function updateSection() {
-    fetch(window.Shopify.routes.root + '?section_id=shopify-section-{{ section.id }}')
-      .then((response) => response.text())
-      .then((data) => {
-        const parser = new DOMParser();
-        const html = parser.parseFromString(data, 'text/html');
-        const sectionHTML = html.querySelector('#custom-featured-products').innerHTML;
-
-        document.getElementById('custom-featured-products').innerHTML = sectionHTML;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  var forms = document.querySelectorAll('.featured-products__form');
-
-  forms.forEach(function (form) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      var variantId = form.querySelector('.product-variant-select').value;
-      var quantity = 1;
-
-      var formData = new FormData();
-      formData.append('id', variantId);
-      formData.append('quantity', quantity);
-
-      fetch('/cart/add.js', {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response) => {
-          console.log('Product added to cart');
-          {% comment %} updateSection(); {% endcomment %}
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    });
-  });
-</script>
+</featured-products>
 
 {% schema %}
 {
