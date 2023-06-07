@@ -12,6 +12,18 @@ class CartNotification extends HTMLElement {
     );
   }
 
+  cartUpdateUnsubscriber = undefined;
+
+  connectedCallback() {
+    this.cartUpdateUnsubscriber = subscribe(PUB_SUB_EVENTS.cartUpdate, this.open.bind(this));
+  }
+
+  disconnectedCallback() {
+    if (this.cartUpdateUnsubscriber) {
+      this.cartUpdateUnsubscriber();
+    }
+  }
+
   open() {
     this.notification.classList.add('animate', 'active');
 
