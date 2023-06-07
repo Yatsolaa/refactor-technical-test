@@ -1,17 +1,18 @@
 {{ 'featured-products.scss.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'featured-product.js' | asset_url }}" defer></script>
 
-<featured-products class="featured-products" id="custom-featured-products">
+<section class="featured-products" id="custom-featured-products">
   <div class="container">
     {% if section.settings.title != blank %}
       <h2 class="featured-products__title">{{ section.settings.title }}</h2>
     {% endif %}
-    <ul class="featured-products__products">
+    <ul class="featured-products__products" id="featured-products__list" data-section-id="{{ section.id }}">
       {% if section.settings.collection != blank %}
         {% render 'featured-product-item' for section.settings.collection.products as product, product: product %}
       {% endif %}
     </ul>
   </div>
-</featured-products>
+</section>
 
 {% schema %}
 {

@@ -8,46 +8,48 @@
     {%- endfor -%}
   "
 >
-  <div class="featured-products__image-wrapper">
-    <a href="{{ product.url }}">
-      <img
-        srcset="
-          {%- if product.featured_image.width >= 320 -%}{{ product.featured_image.src | img_url: '320x' }} 320w,{%- endif -%}
-          {%- if product.featured_image.width >= 425 -%}{{ product.featured_image.src | img_url: '425' }} 425w,{%- endif -%}
-          {%- if product.featured_image.width >= 535 -%}{{ product.featured_image.src | img_url: '535x' }} 535w,{%- endif -%}
-          {%- if product.featured_image.width >= 750 -%}{{ product.featured_image.src | img_url: '750x' }} 750w,{%- endif -%}
-          {%- if product.featured_image.width >= 810 -%}{{ product.featured_image.src | img_url: '810x' }} 810w,{%- endif -%}
-          {%- if product.featured_image.width >= 1024 -%}{{ product.featured_image.src | img_url: '1024x' }} 1024w,{%- endif -%}
-          {%- if product.featured_image.width >= 1200 -%}{{ product.featured_image.src | img_url: '1200x' }} 1200w,{%- endif -%}
-          {%- if product.featured_image.width >= 1440 -%}{{ product.featured_image.src | img_url: '1440x' }} 1440w,{%- endif -%}
-          {%- if product.featured_image.width >= 1920 -%}{{ product.featured_image.src | img_url: '1920x' }} 1920w,{%- endif -%}
-          {%- if product.featured_image.width >= 2500 -%}{{ product.featured_image.src | img_url: '2500x' }} 2500w,{%- endif -%}
-          {{ product.featured_image.src | img_url: 'master' }} {{ product.featured_image.width }}w
-        "
-        src="{{ product.featured_image.src | img_url: '2500x' }}"
-        alt="{{ product.featured_image.alt | escape }}"
-        loading="lazy"
-        width="{{ product.featured_image.width }}"
-        height="{{ product.featured_image.height }}"
-      >
-    </a>
-  </div>
-  <h4 class="featured-products__product-name">{{ product.title }}</h4>
+  <featured-product>
+    <div class="featured-products__image-wrapper">
+      <a href="{{ product.url }}">
+        <img
+          srcset="
+            {%- if product.featured_image.width >= 320 -%}{{ product.featured_image.src | img_url: '320x' }} 320w,{%- endif -%}
+            {%- if product.featured_image.width >= 425 -%}{{ product.featured_image.src | img_url: '425' }} 425w,{%- endif -%}
+            {%- if product.featured_image.width >= 535 -%}{{ product.featured_image.src | img_url: '535x' }} 535w,{%- endif -%}
+            {%- if product.featured_image.width >= 750 -%}{{ product.featured_image.src | img_url: '750x' }} 750w,{%- endif -%}
+            {%- if product.featured_image.width >= 810 -%}{{ product.featured_image.src | img_url: '810x' }} 810w,{%- endif -%}
+            {%- if product.featured_image.width >= 1024 -%}{{ product.featured_image.src | img_url: '1024x' }} 1024w,{%- endif -%}
+            {%- if product.featured_image.width >= 1200 -%}{{ product.featured_image.src | img_url: '1200x' }} 1200w,{%- endif -%}
+            {%- if product.featured_image.width >= 1440 -%}{{ product.featured_image.src | img_url: '1440x' }} 1440w,{%- endif -%}
+            {%- if product.featured_image.width >= 1920 -%}{{ product.featured_image.src | img_url: '1920x' }} 1920w,{%- endif -%}
+            {%- if product.featured_image.width >= 2500 -%}{{ product.featured_image.src | img_url: '2500x' }} 2500w,{%- endif -%}
+            {{ product.featured_image.src | img_url: 'master' }} {{ product.featured_image.width }}w
+          "
+          src="{{ product.featured_image.src | img_url: '2500x' }}"
+          alt="{{ product.featured_image.alt | escape }}"
+          loading="lazy"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
+        >
+      </a>
+    </div>
+    <h4 class="featured-products__product-name">{{ product.title }}</h4>
 
-  <div class="featured-products__form-wrapper">
-    <form class="featured-products__form" method="post" action="/cart/add">
-      <input
-        id="product-id"
-        class="product-variant-select"
-        type="hidden"
-        name="id"
-        value="{{ product.variants.first.id }}"
-      >
-      <input
-        type="submit"
-        value="Add to cart - {{ product.price | money_without_trailing_zeros }}"
-        class="product-variant-submit-button"
-      >
-    </form>
-  </div>
+    <div class="featured-products__form-wrapper">
+      <form class="featured-products__form" method="post" action="/cart/add">
+        <input
+          id="product-id"
+          class="product-variant-select"
+          type="hidden"
+          name="id"
+          value="{{ product.variants.first.id }}"
+        >
+        <input
+          type="submit"
+          value="Add to cart - {{ product.price | money_without_trailing_zeros }}"
+          class="product-variant-submit-button"
+        >
+      </form>
+    </div>
+  </featured-product>
 </li>
