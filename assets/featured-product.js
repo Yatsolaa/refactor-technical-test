@@ -21,7 +21,7 @@ if (!customElements.get('featured-product')) {
                 body: formData,
             })
                 .then((response) => {
-                    publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
+                    publish(PUB_SUB_EVENTS.cartUpdate, { source: 'featured-products', productVariantId: formData.get('id') });
                     this.updateSection();
                 })
                 .catch((error) => {
