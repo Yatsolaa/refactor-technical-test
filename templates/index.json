@@ -73,11 +73,49 @@
         "title": "Featured Products",
         "collection": "featured-products"
       }
+    },
+    "42c588d7-f1cf-4ce4-a4f8-60bfb778ba45": {
+      "type": "flickity-slider",
+      "blocks": {
+        "a2fa6ce3-6c3b-4d64-b9de-cacb269ab46f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/oscar-helgstrand-6ojCyWPrzCk-unsplash1_211adc81-e773-4e6b-80dd-7a4b1662c7eb.jpg"
+          }
+        },
+        "639765da-5e93-4a57-b727-63a54f1519ef": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/linh-le-a0rE64YJDA4-unsplash1_c3aa6ee8-f481-45f7-b753-77fc10c10451.jpg"
+          }
+        },
+        "73844a2a-9466-4a38-ad34-f90abc9d277a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/linh-le-giP0e750Dr8-unsplash1_3e60a4e9-7ecf-4221-837d-a14bd72fd429.jpg"
+          }
+        },
+        "3acf92e1-1ca3-4a2d-9a7d-460e4e656554": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/kasia-sikorska-71EoX-X3LNU-unsplash1_21285b2b-4ce9-4731-91d9-cd2aefd38b4d.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "a2fa6ce3-6c3b-4d64-b9de-cacb269ab46f",
+        "639765da-5e93-4a57-b727-63a54f1519ef",
+        "73844a2a-9466-4a38-ad34-f90abc9d277a",
+        "3acf92e1-1ca3-4a2d-9a7d-460e4e656554"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "5c7cb8fe-ad7a-48ff-b52a-c84596ba2886"
+    "5c7cb8fe-ad7a-48ff-b52a-c84596ba2886",
+    "42c588d7-f1cf-4ce4-a4f8-60bfb778ba45"
   ]
 }

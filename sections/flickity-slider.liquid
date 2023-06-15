@@ -1,0 +1,72 @@
+<section class="flickity">
+  <div class="container">
+    <div class="main-carousel">
+      {% for block in section.blocks %}
+        <div>
+          <img src="{{ block.settings.image.src | img_url: 'master' }}" alt="">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .flickity .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 15px;
+  }
+
+  .flickity .main-carousel img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .flickity .main-carousel {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .carousel-cell {
+    width: 100%; /* full width */
+    height: 160px; /* height of carousel */
+    margin-right: 10px;
+  }
+</style>
+
+<script>
+  $('.main-carousel').flickity({
+    // options
+    cellAlign: 'left',
+    contain: true,
+    draggable: true,
+    wrapAround: true,
+    autoPlay: true,
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Flickity",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "flickity"
+    }
+  ]
+}
+{% endschema %}
