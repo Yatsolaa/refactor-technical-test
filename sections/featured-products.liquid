@@ -17,29 +17,31 @@
   <br>
   <br>
 
-  <div class="desktop-localization-wrapper">
-    {%- if localization.available_countries.size > 1 -%}
-      <localization-form class="small-hide medium-hide">
-        {%- form 'localization', class: 'localization-form' -%}
-          <div class="no-js-hidden">
-            <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
-            {%- render 'country-localization' -%}
-          </div>
-        {%- endform -%}
-      </localization-form>
-    {% endif %}
+  {% if section.settings.localization %}
+    <div class="desktop-localization-wrapper">
+      {%- if localization.available_countries.size > 1 -%}
+        <localization-form class="small-hide medium-hide">
+          {%- form 'localization', class: 'localization-form' -%}
+            <div class="no-js-hidden">
+              <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+              {%- render 'country-localization' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {% endif %}
 
-    {%- if localization.available_languages.size > 1 -%}
-      <localization-form class="small-hide medium-hide">
-        {%- form 'localization', class: 'localization-form' -%}
-          <div class="no-js-hidden">
-            <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
-            {%- render 'language-localization' -%}
-          </div>
-        {%- endform -%}
-      </localization-form>
-    {%- endif -%}
-  </div>
+      {%- if localization.available_languages.size > 1 -%}
+        <localization-form class="small-hide medium-hide">
+          {%- form 'localization', class: 'localization-form' -%}
+            <div class="no-js-hidden">
+              <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+              {%- render 'language-localization' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {%- endif -%}
+    </div>
+  {% endif %}
 </section>
 
 {% schema %}
@@ -56,6 +58,12 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "localization",
+      "label": "Show language select",
+      "default": false
     }
   ],
   "presets": [
